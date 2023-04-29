@@ -74,3 +74,10 @@ module "autoscaling_group" {
 	target_group_arn		= module.load_balancer.target_group_arn
 	private_instance_sg = module.security_groups.private_instance_sg
 }
+
+# create dns
+module "DNS" {
+	source 			= "../modules/DNS"
+	lb_dns_name = module.load_balancer.lb_dns_name
+	lb_zone_id 	= module.load_balancer.lb_zone_id
+}
